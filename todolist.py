@@ -6,7 +6,13 @@ import numpy as np
 
 def main():
     
-    tasks = []
+    try:
+        tasks_file = open('tasks.txt', 'r')
+        tasks = tasks_file.read().splitlines()
+    except FileNotFoundError:
+        tasks = []
+
+        
     while True:
         
     
@@ -44,6 +50,9 @@ def main():
                 print(' Bad index')
 
         elif command == 'x':
+            f = open('tasks.txt', 'w')
+            for task in tasks:
+                f.write(task + '\n')
             break
 
 if __name__ == '__main__':
